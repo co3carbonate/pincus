@@ -3,68 +3,20 @@
 <head>
 <meta charset='utf-8'>
 <title>Pincus!</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script src="https://cdn.rawgit.com/puppybits/QTransform/master/QTransform.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-<style>
-.pincus {
-	font-family: Verdana;
-	position: absolute;
-	font-size: 36px;
-}
-</style>
-<script>
-function random_int(min, max) {
-	return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-</script>
-<script>
-$(document).ready(function() {
-	var pincus = $('.pincus');
-
-	// Unleash the pincus! {:'-D
-	function activate() {
-		pincus.stop();
-		var operation = random_int(1, 3);
-		var time = 0;
-		var easing = (["swing","easeInQuad","easeOutQuad","easeInOutQuad","easeInCubic","easeOutCubic","easeInOutCubic","easeInQuart","easeOutQuart","easeInOutQuart","easeInQuint","easeOutQuint","easeInOutQuint","easeInSine","easeOutSine","easeInOutSine","easeInExpo","easeOutExpo","easeInOutExpo","easeInCirc","easeOutCirc","easeInOutCirc","easeInElastic","easeOutElastic","easeInOutElastic","easeInBack","easeOutBack","easeInOutBack","easeInBounce","easeOutBounce","easeInOutBounce"])[random_int(0, 30)];
-
-		if(operation == 1) {
-			// rotate pincus
-			// -90deg, 90deg, 180deg, and 360deg
-			var rotation = ([-90, 90, 180, 360])[random_int(0, 3)];
-			time = random_int(1000, 4000);
-			pincus.animate({
-				rotate: rotation + 'deg'
-			}, time, easing);
-		}
-		else if(operation == 2) {
-			// move pincus
-			var newLeft = random_int(0, $(window).width()) + 'px';
-			var newTop = random_int(0, $(window).height()) + 'px';
-			time = random_int(1000, 4000);
-			pincus.animate({
-				left: newLeft,
-				top: newTop
-			}, time, easing);
-		}
-		else if(operation == 3) {
-			// change pincus size
-			time = random_int(1000, 4000);
-			pincus.animate({
-				scale: random_int(0.8, 4)
-			}, time, easing);
-		}
-
-		setTimeout(activate, time + random_int(0, 500));
-	}
-	activate();
-});
-</script>
+<script src="lib/jquery.min.js"></script>
+<script src="lib/jquery.easing.min.js"></script>
+<script src="lib/jquery.transform.min.js"></script>
+<link rel="stylesheet" type="text/css" href="src/style.css">
 </head>
 <body>
 
 <div class='pincus'>{:'-D</div>
+
+<script src="src/globals.js"></script>
+<script src="src/rotation.js"></script>
+<script src="src/movement.js"></script>
+<script src="src/scale.js"></script>
+<script src="src/main.js"></script>
 
 </body>
 </html>
